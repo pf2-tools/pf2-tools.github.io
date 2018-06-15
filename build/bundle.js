@@ -107,8 +107,10 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-if (window.location.pathname.split('/')[1] === 'pathfinder2-character-planner') {
-  window.location.replace('http://pathfinder2-character-planner.github.io');
+var REPO = 'pf2-tools';
+
+if (window.location.pathname.split('/')[1] === REPO) {
+  window.location.replace('http://' + REPO + '.github.io');
 }
 
 (0, _reactDom.render)(_jsx(_reactRouterDom.BrowserRouter, {}, void 0, _jsx(_App2.default, {})), document.getElementById('root'));
@@ -23979,7 +23981,7 @@ var _Builder = __webpack_require__(67);
 
 var _Builder2 = _interopRequireDefault(_Builder);
 
-var _App = __webpack_require__(68);
+var _App = __webpack_require__(85);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -24081,19 +24083,19 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Ancestry = __webpack_require__(73);
+var _Ancestry = __webpack_require__(68);
 
 var _Ancestry2 = _interopRequireDefault(_Ancestry);
 
-var _Background = __webpack_require__(75);
+var _Background = __webpack_require__(79);
 
 var _Background2 = _interopRequireDefault(_Background);
 
-var _CharacterClass = __webpack_require__(76);
+var _CharacterClass = __webpack_require__(81);
 
 var _CharacterClass2 = _interopRequireDefault(_CharacterClass);
 
-var _Builder = __webpack_require__(78);
+var _Builder = __webpack_require__(83);
 
 var _Builder2 = _interopRequireDefault(_Builder);
 
@@ -24119,8 +24121,292 @@ exports.default = Builder;
 /* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 
-var content = __webpack_require__(69);
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Ancestries = __webpack_require__(69);
+
+var _Ancestries2 = _interopRequireDefault(_Ancestries);
+
+var _HoverList = __webpack_require__(70);
+
+var _HoverList2 = _interopRequireDefault(_HoverList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Item = function Item(_ref) {
+  var ancestry = _ref.ancestry;
+  return _jsx('div', {}, void 0, ancestry.name);
+};
+
+var Ancestry = function (_Component) {
+  _inherits(Ancestry, _Component);
+
+  function Ancestry() {
+    var _ref2;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Ancestry);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = Ancestry.__proto__ || Object.getPrototypeOf(Ancestry)).call.apply(_ref2, [this].concat(args))), _this), _this.state = { placeholder: 'Select Ancestry' }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Ancestry, [{
+    key: 'select',
+    value: function select(node) {
+      this.setState({ placeholder: node.props.title });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _jsx(_HoverList2.default, {
+        placeholder: this.state.placeholder,
+        onSelect: function onSelect(node) {
+          return _this2.select(node);
+        }
+      }, void 0, _Ancestries2.default.map(function (a) {
+        return _jsx(Item, {
+          title: a.name,
+          ancestry: a
+        }, a.name);
+      }));
+    }
+  }]);
+
+  return Ancestry;
+}(_react.Component);
+
+exports.default = Ancestry;
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = [{
+  name: 'Dwarf',
+  abilityBoosts: ['Constitution', 'Wisdom', 'any'],
+  abilityFlaw: ['Charisma'],
+  hp: 10,
+  speed: 20,
+  armorSpeedMod: 1,
+  languages: ['Common', 'Dwarf'],
+  darkVision: 60
+}, {
+  name: 'Elf',
+  abilityBoosts: ['Dexterity', 'Intelligence'],
+  abilityFlaw: ['Constitution'],
+  hp: 6,
+  speed: 30,
+  languages: ['Common', 'Elf'],
+  lowLightVision: 60
+}];
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _VerticalTabs = __webpack_require__(71);
+
+var _VerticalTabs2 = _interopRequireDefault(_VerticalTabs);
+
+var _HoverList = __webpack_require__(77);
+
+var _HoverList2 = _interopRequireDefault(_HoverList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HoverList = function (_Component) {
+  _inherits(HoverList, _Component);
+
+  function HoverList() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, HoverList);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = HoverList.__proto__ || Object.getPrototypeOf(HoverList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { open: false }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(HoverList, [{
+    key: 'hover',
+    value: function hover(open) {
+      this.setState({ open: open });
+    }
+  }, {
+    key: 'select',
+    value: function select(node) {
+      this.hover(false);
+      this.props.onSelect(node);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return !this.state.open ? _jsx('div', {
+        className: _HoverList2.default.placeholder,
+        onMouseEnter: function onMouseEnter() {
+          return _this2.hover(true);
+        }
+      }, void 0, this.props.placeholder) : _jsx(_VerticalTabs2.default, {
+        onSelect: function onSelect(node) {
+          return _this2.select(node);
+        }
+      }, void 0, this.props.children);
+    }
+  }]);
+
+  return HoverList;
+}(_react.Component);
+
+exports.default = HoverList;
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _VerticalTabs = __webpack_require__(72);
+
+var _VerticalTabs2 = _interopRequireDefault(_VerticalTabs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VerticalTabs = function (_Component) {
+  _inherits(VerticalTabs, _Component);
+
+  function VerticalTabs() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, VerticalTabs);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = VerticalTabs.__proto__ || Object.getPrototypeOf(VerticalTabs)).call.apply(_ref, [this].concat(args))), _this), _this.state = { selected: 0 }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(VerticalTabs, [{
+    key: 'select',
+    value: function select(selected) {
+      this.setState({ selected: selected });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _jsx('div', {
+        className: _VerticalTabs2.default.wrapper
+      }, void 0, _jsx('div', {
+        className: _VerticalTabs2.default.tabs
+      }, void 0, this.props.children.map(function (n, i) {
+        return _jsx('div', {
+          className: _VerticalTabs2.default.tab + ' ' + (i === _this2.state.selected ? _VerticalTabs2.default.selected : ''),
+          onMouseEnter: function onMouseEnter() {
+            return _this2.select(i);
+          },
+          onClick: function onClick() {
+            return _this2.props.onSelect(n);
+          }
+        }, n.props.title, n.props.title);
+      })), _jsx('div', {
+        className: _VerticalTabs2.default.details
+      }, void 0, this.props.children[this.state.selected]));
+    }
+  }]);
+
+  return VerticalTabs;
+}(_react.Component);
+
+exports.default = VerticalTabs;
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(73);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -24134,30 +24420,34 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(71)(content, options);
+var update = __webpack_require__(75)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 69 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(70)(true);
+exports = module.exports = __webpack_require__(74)(true);
 // imports
 
 
 // module
-exports.push([module.i, "body{background:#000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;background-size:cover}.App_app_1lS7_ELxvgqza9MDESmLB9{position:absolute;top:0;left:0;bottom:0;right:0}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/components/App.styl"],"names":[],"mappings":"AAAA,KACE,2EAA4E,AAC5E,qBAAuB,CACxB,AACD,gCACE,kBAAmB,AACnB,MAAO,AACP,OAAQ,AACR,SAAU,AACV,OAAS,CACV","file":"App.styl","sourcesContent":[":global body {\n  background: #000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;\n  background-size: cover;\n}\n.app {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".VerticalTabs_wrapper_1uCgW3Um0-_CHQJOZ_ZxZK{display:flex}.VerticalTabs_tabs_16vrDHZhJYcLCw9bvRDLcS{display:flex;flex-direction:column;padding-top:4px;z-index:1;margin-right:-1px}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK{padding:.25em;background-color:purple;border:1px solid #fff;cursor:pointer}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK:not(:first-child){border-top:none}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK.VerticalTabs_selected_nw-vji7f5qz-51v5cynFs{border-width:1px 0 1px 1px}.VerticalTabs_details_1d_y0HJx1I_vMsvPAotjNk{padding:.5em;border:1px solid #fff;background:hsla(0,0%,100%,.6)}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/common/VerticalTabs.styl"],"names":[],"mappings":"AAAA,6CACE,YAAc,CACf,AACD,0CACE,aAAc,AACd,sBAAuB,AACvB,gBAAiB,AACjB,UAAW,AACX,iBAAmB,CACpB,AACD,yCACE,cAAgB,AAChB,wBAA0B,AAC1B,sBAAuB,AACvB,cAAgB,CACjB,AACD,2DACE,eAAiB,CAClB,AACD,qFACE,0BAA4B,CAC7B,AACD,6CACE,aAAe,AACf,sBAAuB,AACvB,6BAAkC,CACnC","file":"VerticalTabs.styl","sourcesContent":[".wrapper {\n  display: flex;\n}\n.tabs {\n  display: flex;\n  flex-direction: column;\n  padding-top: 4px;\n  z-index: 1;\n  margin-right: -1px;\n}\n.tab {\n  padding: 0.25em;\n  background-color: #800080;\n  border: 1px solid #fff;\n  cursor: pointer;\n}\n.tab:not(:first-child) {\n  border-top: none;\n}\n.tab.selected {\n  border-width: 1px 0 1px 1px;\n}\n.details {\n  padding: 0.5em;\n  border: 1px solid #fff;\n  background: rgba(255,255,255,0.6);\n}\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
-	"app": "App_app_1lS7_ELxvgqza9MDESmLB9"
+	"wrapper": "VerticalTabs_wrapper_1uCgW3Um0-_CHQJOZ_ZxZK",
+	"tabs": "VerticalTabs_tabs_16vrDHZhJYcLCw9bvRDLcS",
+	"tab": "VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK",
+	"selected": "VerticalTabs_selected_nw-vji7f5qz-51v5cynFs",
+	"details": "VerticalTabs_details_1d_y0HJx1I_vMsvPAotjNk"
 };
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, exports) {
 
 /*
@@ -24239,7 +24529,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -24305,7 +24595,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(72);
+var	fixUrls = __webpack_require__(76);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -24625,7 +24915,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, exports) {
 
 
@@ -24720,122 +25010,48 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 73 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+
+var content = __webpack_require__(78);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var options = {"hmr":true}
 
-var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+options.transform = transform
+options.insertInto = undefined;
 
-var _react = __webpack_require__(1);
+var update = __webpack_require__(75)(content, options);
 
-var _react2 = _interopRequireDefault(_react);
+if(content.locals) module.exports = content.locals;
 
-var _Ancestries = __webpack_require__(74);
+if(false) {}
 
-var _Ancestries2 = _interopRequireDefault(_Ancestries);
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var _HoverList = __webpack_require__(77);
+exports = module.exports = __webpack_require__(74)(true);
+// imports
 
-var _HoverList2 = _interopRequireDefault(_HoverList);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+// module
+exports.push([module.i, ".HoverList_placeholder_seWWrPn9Cdi4luwa_-nog{display:inline-block;cursor:pointer}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/common/HoverList.styl"],"names":[],"mappings":"AAAA,6CACE,qBAAsB,AACtB,cAAgB,CACjB","file":"HoverList.styl","sourcesContent":[".placeholder {\n  display: inline-block;\n  cursor: pointer;\n}\n"],"sourceRoot":""}]);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Item = function Item(_ref) {
-  var ancestry = _ref.ancestry;
-  return _jsx('div', {}, void 0, ancestry.name);
+// exports
+exports.locals = {
+	"placeholder": "HoverList_placeholder_seWWrPn9Cdi4luwa_-nog"
 };
 
-var Ancestry = function (_Component) {
-  _inherits(Ancestry, _Component);
-
-  function Ancestry() {
-    var _ref2;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Ancestry);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = Ancestry.__proto__ || Object.getPrototypeOf(Ancestry)).call.apply(_ref2, [this].concat(args))), _this), _this.state = { placeholder: 'Select Ancestry' }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Ancestry, [{
-    key: 'select',
-    value: function select(node) {
-      this.setState({ placeholder: node.props.title });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return _jsx(_HoverList2.default, {
-        placeholder: this.state.placeholder,
-        onSelect: function onSelect(node) {
-          return _this2.select(node);
-        }
-      }, void 0, _Ancestries2.default.map(function (a) {
-        return _jsx(Item, {
-          title: a.name,
-          ancestry: a
-        }, a.name);
-      }));
-    }
-  }]);
-
-  return Ancestry;
-}(_react.Component);
-
-exports.default = Ancestry;
-
 /***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = [{
-  name: 'Dwarf',
-  abilityBoosts: ['Constitution', 'Wisdom', 'any'],
-  abilityFlaw: ['Charisma'],
-  hp: 10,
-  speed: 20,
-  armorSpeedMod: 1,
-  languages: ['Common', 'Dwarf'],
-  darkVision: 60
-}, {
-  name: 'Elf',
-  abilityBoosts: ['Dexterity', 'Intelligence'],
-  abilityFlaw: ['Constitution'],
-  hp: 6,
-  speed: 30,
-  languages: ['Common', 'Elf'],
-  lowLightVision: 60
-}];
-
-/***/ }),
-/* 75 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24853,11 +25069,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Backgrounds = __webpack_require__(85);
+var _Backgrounds = __webpack_require__(80);
 
 var _Backgrounds2 = _interopRequireDefault(_Backgrounds);
 
-var _HoverList = __webpack_require__(77);
+var _HoverList = __webpack_require__(70);
 
 var _HoverList2 = _interopRequireDefault(_HoverList);
 
@@ -24921,7 +25137,37 @@ var Background = function (_Component) {
 exports.default = Background;
 
 /***/ }),
-/* 76 */
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = [{
+  name: 'Blacksmith',
+  description: _jsx(_react.Fragment, {}, void 0, _jsx('p', {}, void 0, 'You were a blacksmith or a blacksmith\'s apprentice, and during countless hours toiling at the forge, you learned how to smith armor and weapons. Perhaps you worked hard each day and dreamed of adventure each night, or perhaps the adventuring life was thrust upon you by a pivotal event.'), _jsx('p', {}, void 0, 'Choose two ability boosts. One must be to Strength or Intelligence, and one is a free ability boost.'), _jsx('p', {}, void 0, 'You gain the Specialty Crafting skill feat for blacksmithing, and you\'re trained in the Smithing Lore skill.'))
+}, {
+  name: 'Street Urchin',
+  description: _jsx(_react.Fragment, {}, void 0, _jsx('p', {}, void 0, 'You eked out a living by picking pockets on the streets of a major city, never knowing where you\'d find your next meal. While some folk adventure for the glory, you adventure as a means of survival.'), _jsx('p', {}, void 0, 'Choose two ability boosts. One must be to Dexterity or Intelligence, and one is a free ability boost.'), _jsx('p', {}, void 0, 'You gain the Pickpocket skill feat, and you\'re trained in the Underworld Lore skill.'))
+}, {
+  name: 'Pathfinder Hopeful',
+  description: _jsx(_react.Fragment, {}, void 0, _jsx('p', {}, void 0, 'You\'ve long wanted to join the adventurous Pathfinder Society, a world-spanning organization of relic hunters. This aspiration has led you to take up the dangerous life of an adventurer eager to make a name for yourself and gain the attention of the Pathfinder Society.'), _jsx('p', {}, void 0, 'Choose two ability boosts. One must be to Strength or Intelligence, and one is a free ability boost.'), _jsx('p', {}, void 0, 'You gain the Additional Lore feat, and you\'re trained in the Pathfinder Society Lore skill.'))
+}];
+
+/***/ }),
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24939,11 +25185,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Classes = __webpack_require__(86);
+var _Classes = __webpack_require__(82);
 
 var _Classes2 = _interopRequireDefault(_Classes);
 
-var _HoverList = __webpack_require__(77);
+var _HoverList = __webpack_require__(70);
 
 var _HoverList2 = _interopRequireDefault(_HoverList);
 
@@ -25007,333 +25253,7 @@ var CharacterClass = function (_Component) {
 exports.default = CharacterClass;
 
 /***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _VerticalTabs = __webpack_require__(80);
-
-var _VerticalTabs2 = _interopRequireDefault(_VerticalTabs);
-
-var _HoverList = __webpack_require__(83);
-
-var _HoverList2 = _interopRequireDefault(_HoverList);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var HoverList = function (_Component) {
-  _inherits(HoverList, _Component);
-
-  function HoverList() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, HoverList);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = HoverList.__proto__ || Object.getPrototypeOf(HoverList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { open: false }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(HoverList, [{
-    key: 'hover',
-    value: function hover(open) {
-      this.setState({ open: open });
-    }
-  }, {
-    key: 'select',
-    value: function select(node) {
-      this.hover(false);
-      this.props.onSelect(node);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return !this.state.open ? _jsx('div', {
-        className: _HoverList2.default.placeholder,
-        onMouseEnter: function onMouseEnter() {
-          return _this2.hover(true);
-        }
-      }, void 0, this.props.placeholder) : _jsx(_VerticalTabs2.default, {
-        onSelect: function onSelect(node) {
-          return _this2.select(node);
-        }
-      }, void 0, this.props.children);
-    }
-  }]);
-
-  return HoverList;
-}(_react.Component);
-
-exports.default = HoverList;
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(79);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(71)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(70)(true);
-// imports
-
-
-// module
-exports.push([module.i, ".Builder_info_RAF6H0RmWJ7jASvjPlTox{margin:1em;padding:.5em;background:rgba(0,0,0,.6);border:1px solid #000;color:#fff}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/components/pages/Builder.styl"],"names":[],"mappings":"AAAA,oCACE,WAAY,AACZ,aAAe,AACf,0BAA4B,AAC5B,sBAAuB,AACvB,UAAY,CACb","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n  padding: 0.5em;\n  background: rgba(0,0,0,0.6);\n  border: 1px solid #000;\n  color: #fff;\n}\n"],"sourceRoot":""}]);
-
-// exports
-exports.locals = {
-	"info": "Builder_info_RAF6H0RmWJ7jASvjPlTox"
-};
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _VerticalTabs = __webpack_require__(81);
-
-var _VerticalTabs2 = _interopRequireDefault(_VerticalTabs);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var VerticalTabs = function (_Component) {
-  _inherits(VerticalTabs, _Component);
-
-  function VerticalTabs() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, VerticalTabs);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = VerticalTabs.__proto__ || Object.getPrototypeOf(VerticalTabs)).call.apply(_ref, [this].concat(args))), _this), _this.state = { selected: 0 }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(VerticalTabs, [{
-    key: 'select',
-    value: function select(selected) {
-      this.setState({ selected: selected });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return _jsx('div', {
-        className: _VerticalTabs2.default.wrapper
-      }, void 0, _jsx('div', {
-        className: _VerticalTabs2.default.tabs
-      }, void 0, this.props.children.map(function (n, i) {
-        return _jsx('div', {
-          className: _VerticalTabs2.default.tab + ' ' + (i === _this2.state.selected ? _VerticalTabs2.default.selected : ''),
-          onMouseEnter: function onMouseEnter() {
-            return _this2.select(i);
-          },
-          onClick: function onClick() {
-            return _this2.props.onSelect(n);
-          }
-        }, n.props.title, n.props.title);
-      })), _jsx('div', {
-        className: _VerticalTabs2.default.details
-      }, void 0, this.props.children[this.state.selected]));
-    }
-  }]);
-
-  return VerticalTabs;
-}(_react.Component);
-
-exports.default = VerticalTabs;
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(82);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(71)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
 /* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(70)(true);
-// imports
-
-
-// module
-exports.push([module.i, ".VerticalTabs_wrapper_3ajSfVcAtxTcsuaxWR2JrD{display:flex}.VerticalTabs_tabs_tz8NywmJdhTvpjCXCUlZa{display:flex;flex-direction:column;padding-top:4px;z-index:1;margin-right:-1px}.VerticalTabs_tab_1vUa2gQmai5V3zA8Vtf2Tw{padding:.25em;background-color:purple;border:1px solid #fff;cursor:pointer}.VerticalTabs_tab_1vUa2gQmai5V3zA8Vtf2Tw:not(:first-child){border-top:none}.VerticalTabs_tab_1vUa2gQmai5V3zA8Vtf2Tw.VerticalTabs_selected_rG-bmfuC2Zbigpc6nJJaS{border-width:1px 0 1px 1px}.VerticalTabs_details_1w6vqxl-tu3NvlN-U0E7sx{padding:.5em;border:1px solid #fff;background:hsla(0,0%,100%,.6)}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/components/common/VerticalTabs.styl"],"names":[],"mappings":"AAAA,6CACE,YAAc,CACf,AACD,yCACE,aAAc,AACd,sBAAuB,AACvB,gBAAiB,AACjB,UAAW,AACX,iBAAmB,CACpB,AACD,yCACE,cAAgB,AAChB,wBAA0B,AAC1B,sBAAuB,AACvB,cAAgB,CACjB,AACD,2DACE,eAAiB,CAClB,AACD,qFACE,0BAA4B,CAC7B,AACD,6CACE,aAAe,AACf,sBAAuB,AACvB,6BAAkC,CACnC","file":"VerticalTabs.styl","sourcesContent":[".wrapper {\n  display: flex;\n}\n.tabs {\n  display: flex;\n  flex-direction: column;\n  padding-top: 4px;\n  z-index: 1;\n  margin-right: -1px;\n}\n.tab {\n  padding: 0.25em;\n  background-color: #800080;\n  border: 1px solid #fff;\n  cursor: pointer;\n}\n.tab:not(:first-child) {\n  border-top: none;\n}\n.tab.selected {\n  border-width: 1px 0 1px 1px;\n}\n.details {\n  padding: 0.5em;\n  border: 1px solid #fff;\n  background: rgba(255,255,255,0.6);\n}\n"],"sourceRoot":""}]);
-
-// exports
-exports.locals = {
-	"wrapper": "VerticalTabs_wrapper_3ajSfVcAtxTcsuaxWR2JrD",
-	"tabs": "VerticalTabs_tabs_tz8NywmJdhTvpjCXCUlZa",
-	"tab": "VerticalTabs_tab_1vUa2gQmai5V3zA8Vtf2Tw",
-	"selected": "VerticalTabs_selected_rG-bmfuC2Zbigpc6nJJaS",
-	"details": "VerticalTabs_details_1w6vqxl-tu3NvlN-U0E7sx"
-};
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(84);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(71)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(70)(true);
-// imports
-
-
-// module
-exports.push([module.i, ".HoverList_placeholder_2HrAHRfOJBtLBAJ368PDyM{display:inline-block;cursor:pointer}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/components/common/HoverList.styl"],"names":[],"mappings":"AAAA,8CACE,qBAAsB,AACtB,cAAgB,CACjB","file":"HoverList.styl","sourcesContent":[".placeholder {\n  display: inline-block;\n  cursor: pointer;\n}\n"],"sourceRoot":""}]);
-
-// exports
-exports.locals = {
-	"placeholder": "HoverList_placeholder_2HrAHRfOJBtLBAJ368PDyM"
-};
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = [{
-  name: 'Blacksmith',
-  description: _jsx(_react.Fragment, {}, void 0, _jsx('p', {}, void 0, 'You were a blacksmith or a blacksmith\'s apprentice, and during countless hours toiling at the forge, you learned how to smith armor and weapons. Perhaps you worked hard each day and dreamed of adventure each night, or perhaps the adventuring life was thrust upon you by a pivotal event.'), _jsx('p', {}, void 0, 'Choose two ability boosts. One must be to Strength or Intelligence, and one is a free ability boost.'), _jsx('p', {}, void 0, 'You gain the Specialty Crafting skill feat for blacksmithing, and you\'re trained in the Smithing Lore skill.'))
-}, {
-  name: 'Street Urchin',
-  description: _jsx(_react.Fragment, {}, void 0, _jsx('p', {}, void 0, 'You eked out a living by picking pockets on the streets of a major city, never knowing where you\'d find your next meal. While some folk adventure for the glory, you adventure as a means of survival.'), _jsx('p', {}, void 0, 'Choose two ability boosts. One must be to Dexterity or Intelligence, and one is a free ability boost.'), _jsx('p', {}, void 0, 'You gain the Pickpocket skill feat, and you\'re trained in the Underworld Lore skill.'))
-}, {
-  name: 'Pathfinder Hopeful',
-  description: _jsx(_react.Fragment, {}, void 0, _jsx('p', {}, void 0, 'You\'ve long wanted to join the adventurous Pathfinder Society, a world-spanning organization of relic hunters. This aspiration has led you to take up the dangerous life of an adventurer eager to make a name for yourself and gain the attention of the Pathfinder Society.'), _jsx('p', {}, void 0, 'Choose two ability boosts. One must be to Strength or Intelligence, and one is a free ability boost.'), _jsx('p', {}, void 0, 'You gain the Additional Lore feat, and you\'re trained in the Pathfinder Society Lore skill.'))
-}];
-
-/***/ }),
-/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25357,6 +25277,88 @@ exports.default = [{
 }, {
   name: 'Wizard'
 }];
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(84);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(75)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(74)(true);
+// imports
+
+
+// module
+exports.push([module.i, ".Builder_info_1klbihzAtfAdVPbdtZH50X{margin:1em;padding:.5em;background:rgba(0,0,0,.6);border:1px solid #000;color:#fff}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/pages/Builder.styl"],"names":[],"mappings":"AAAA,qCACE,WAAY,AACZ,aAAe,AACf,0BAA4B,AAC5B,sBAAuB,AACvB,UAAY,CACb","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n  padding: 0.5em;\n  background: rgba(0,0,0,0.6);\n  border: 1px solid #000;\n  color: #fff;\n}\n"],"sourceRoot":""}]);
+
+// exports
+exports.locals = {
+	"info": "Builder_info_1klbihzAtfAdVPbdtZH50X"
+};
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(86);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(75)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(74)(true);
+// imports
+
+
+// module
+exports.push([module.i, "body{background:#000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;background-size:cover}.App_app_1ityU3kuKPbxvHl2IqHIVW{position:absolute;top:0;left:0;bottom:0;right:0}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/App.styl"],"names":[],"mappings":"AAAA,KACE,2EAA4E,AAC5E,qBAAuB,CACxB,AACD,gCACE,kBAAmB,AACnB,MAAO,AACP,OAAQ,AACR,SAAU,AACV,OAAS,CACV","file":"App.styl","sourcesContent":[":global body {\n  background: #000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;\n  background-size: cover;\n}\n.app {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n"],"sourceRoot":""}]);
+
+// exports
+exports.locals = {
+	"app": "App_app_1ityU3kuKPbxvHl2IqHIVW"
+};
 
 /***/ })
 /******/ ]);
