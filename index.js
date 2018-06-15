@@ -4,8 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 
 import App from './components/App';
 
-if (window.location.pathname.split('/')[1] === 'pathfinder2-character-planner'){
-  window.location.replace('http://pathfinder2-character-planner.github.io')
+const REPO = 'pf2-tools'
+
+if (window.location.pathname.split('/')[1] === REPO){
+  window.location.replace(`http://${REPO}.github.io`)
 }
 
 render(

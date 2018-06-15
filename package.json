@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/rafrex/react-github-pages/issues"
   },
-  "homepage": "https://github.com/rafrex/react-github-pages#readme",
+  "homepage": "https://pf2-tools.github.io",
   "scripts": {
     "start:dev": "./node_modules/.bin/webpack-dev-server"
   },
