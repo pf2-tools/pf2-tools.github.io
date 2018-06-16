@@ -24083,6 +24083,8 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _util = __webpack_require__(87);
+
 var _Ancestry = __webpack_require__(68);
 
 var _Ancestry2 = _interopRequireDefault(_Ancestry);
@@ -24112,7 +24114,15 @@ var _ref4 = _jsx('ul', {}, void 0, _jsx('li', {}, void 0, 'Assign Skill Proficie
 var Builder = function Builder() {
   return _jsx('div', {
     className: _Builder2.default.info
-  }, void 0, _ref, _ref2, _ref3, _ref4);
+  }, void 0, _jsx('div', {
+    className: _Builder2.default.basic
+  }, void 0, _jsx('span', {
+    className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.ancestry)
+  }, void 0, _ref), _jsx('span', {
+    className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.bg)
+  }, void 0, _ref2), _jsx('span', {
+    className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.charClass)
+  }, void 0, _ref3)), _ref4);
 };
 
 exports.default = Builder;
@@ -25312,11 +25322,13 @@ exports = module.exports = __webpack_require__(74)(true);
 
 
 // module
-exports.push([module.i, ".Builder_info_1klbihzAtfAdVPbdtZH50X{margin:1em;padding:.5em;background:rgba(0,0,0,.6);border:1px solid #000;color:#fff}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/pages/Builder.styl"],"names":[],"mappings":"AAAA,qCACE,WAAY,AACZ,aAAe,AACf,0BAA4B,AAC5B,sBAAuB,AACvB,UAAY,CACb","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n  padding: 0.5em;\n  background: rgba(0,0,0,0.6);\n  border: 1px solid #000;\n  color: #fff;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".Builder_info_1klbihzAtfAdVPbdtZH50X{margin:1em}.Builder_basic_5ImX9yfW3CZItfHdxLwJe{padding:.5em;background:rgba(0,0,0,.6);border:1px solid #000;color:#fff;display:flex}.Builder_block_Ub98P_qabkJyWTQz2q_xs{display:inline-block}.Builder_block_Ub98P_qabkJyWTQz2q_xs:not(:first-child){margin-left:1em}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/pages/Builder.styl"],"names":[],"mappings":"AAAA,qCACE,UAAY,CACb,AACD,qCACE,aAAe,AACf,0BAA4B,AAC5B,sBAAuB,AACvB,WAAY,AACZ,YAAc,CACf,AACD,qCACE,oBAAsB,CACvB,AACD,uDACE,eAAiB,CAClB","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n}\n.basic {\n  padding: 0.5em;\n  background: rgba(0,0,0,0.6);\n  border: 1px solid #000;\n  color: #fff;\n  display: flex;\n}\n.block {\n  display: inline-block;\n}\n.block:not(:first-child) {\n  margin-left: 1em;\n}\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
-	"info": "Builder_info_1klbihzAtfAdVPbdtZH50X"
+	"info": "Builder_info_1klbihzAtfAdVPbdtZH50X",
+	"basic": "Builder_basic_5ImX9yfW3CZItfHdxLwJe",
+	"block": "Builder_block_Ub98P_qabkJyWTQz2q_xs"
 };
 
 /***/ }),
@@ -25359,6 +25371,46 @@ exports.push([module.i, "body{background:#000 url(\"/static/pa-rimeskull-backgro
 exports.locals = {
 	"app": "App_app_1ityU3kuKPbxvHl2IqHIVW"
 };
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var classes = function classes() {
+  for (var _len = arguments.length, vals = Array(_len), _key = 0; _key < _len; _key++) {
+    vals[_key] = arguments[_key];
+  }
+
+  return vals.map(function (val) {
+    if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
+      return Object.entries(val).map(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            name = _ref2[0],
+            check = _ref2[1];
+
+        return check && name;
+      }).filter(function (v) {
+        return !!v;
+      });
+    }
+    return [val];
+  }).reduce(function (accum, val) {
+    return accum.concat(val);
+  }).join(' ');
+};
+
+exports.classes = classes;
 
 /***/ })
 /******/ ]);
