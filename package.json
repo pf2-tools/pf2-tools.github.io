@@ -1,16 +1,16 @@
 {
-  "name": "react-github-pages",
-  "description": "React with React Router boilerplate for GitHub Pages",
-  "author": "Rafael Pedicini <code@rafrex.com>",
+  "name": "pathfinder2-tools",
+  "description": "Pathfinder 2 Tools",
+  "author": "Nazuraki <nazuraki@gmail.com>",
   "license": "MIT",
   "private": "true",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafrex/react-github-pages.git"
+    "url": "git+https://github.com/pf2-tools/pf2-tools.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/rafrex/react-github-pages/issues"
+    "url": "https://github.com/pf2-tools/pf2-tools.github.io/issues"
   },
   "homepage": "https://pf2-tools.github.io",
   "scripts": {

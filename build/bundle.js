@@ -23981,7 +23981,7 @@ var _Builder = __webpack_require__(67);
 
 var _Builder2 = _interopRequireDefault(_Builder);
 
-var _App = __webpack_require__(85);
+var _App = __webpack_require__(86);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -24083,21 +24083,21 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _util = __webpack_require__(87);
+var _util = __webpack_require__(68);
 
-var _Ancestry = __webpack_require__(68);
+var _Ancestry = __webpack_require__(69);
 
 var _Ancestry2 = _interopRequireDefault(_Ancestry);
 
-var _Background = __webpack_require__(79);
+var _Background = __webpack_require__(80);
 
 var _Background2 = _interopRequireDefault(_Background);
 
-var _CharacterClass = __webpack_require__(81);
+var _CharacterClass = __webpack_require__(82);
 
 var _CharacterClass2 = _interopRequireDefault(_CharacterClass);
 
-var _Builder = __webpack_require__(83);
+var _Builder = __webpack_require__(84);
 
 var _Builder2 = _interopRequireDefault(_Builder);
 
@@ -24109,26 +24109,76 @@ var _ref2 = _jsx(_Background2.default, {});
 
 var _ref3 = _jsx(_CharacterClass2.default, {});
 
-var _ref4 = _jsx('ul', {}, void 0, _jsx('li', {}, void 0, 'Assign Skill Proficiencies'), _jsx('li', {}, void 0, 'Select Ancestry Feat'), _jsx('li', {}, void 0, 'Buy Gear'), _jsx('li', {}, void 0, 'Select Class Options'));
+var _ref4 = _jsx('li', {}, void 0, 'Select Ancestry Feat');
+
+var _ref5 = _jsx('li', {}, void 0, 'Assign Skill Proficiencies');
+
+var _ref6 = _jsx('li', {}, void 0, 'Buy Gear');
+
+var _ref7 = _jsx('li', {}, void 0, 'Select Class Options');
 
 var Builder = function Builder() {
   return _jsx('div', {
     className: _Builder2.default.info
   }, void 0, _jsx('div', {
-    className: _Builder2.default.basic
+    className: _Builder2.default.section
   }, void 0, _jsx('span', {
     className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.ancestry)
   }, void 0, _ref), _jsx('span', {
     className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.bg)
   }, void 0, _ref2), _jsx('span', {
     className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.charClass)
-  }, void 0, _ref3)), _ref4);
+  }, void 0, _ref3)), _jsx('div', {
+    className: _Builder2.default.section
+  }, void 0, _ref4, _ref5), _jsx('div', {
+    className: _Builder2.default.section
+  }, void 0, _ref6, _ref7));
 };
 
 exports.default = Builder;
 
 /***/ }),
 /* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var classes = function classes() {
+  for (var _len = arguments.length, vals = Array(_len), _key = 0; _key < _len; _key++) {
+    vals[_key] = arguments[_key];
+  }
+
+  return vals.map(function (val) {
+    if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
+      return Object.entries(val).map(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            name = _ref2[0],
+            check = _ref2[1];
+
+        return check && name;
+      }).filter(function (v) {
+        return !!v;
+      });
+    }
+    return [val];
+  }).reduce(function (accum, val) {
+    return accum.concat(val);
+  }).join(' ');
+};
+
+exports.classes = classes;
+
+/***/ }),
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24146,11 +24196,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Ancestries = __webpack_require__(69);
+var _Ancestries = __webpack_require__(70);
 
 var _Ancestries2 = _interopRequireDefault(_Ancestries);
 
-var _HoverList = __webpack_require__(70);
+var _HoverList = __webpack_require__(71);
 
 var _HoverList2 = _interopRequireDefault(_HoverList);
 
@@ -24214,7 +24264,7 @@ var Ancestry = function (_Component) {
 exports.default = Ancestry;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24240,10 +24290,33 @@ exports.default = [{
   speed: 30,
   languages: ['Common', 'Elf'],
   lowLightVision: 60
+}, {
+  name: 'Gnome',
+  abilityBoosts: ['Constitution', 'Charisma', 'any'],
+  abilityFlaw: ['Strength'],
+  hp: 8,
+  lowLightVision: 60,
+  feats: [{ name: 'Few Fellowship', description: 'more charismatic when dealing with fey' }, { name: 'First World Magic', description: 'bonus cantrip with various options' }, { name: 'Discerning Smell', description: 'find invisible creatures' }, { name: 'Animal Speaker', description: 'talk to animals' }]
+}, {
+  name: 'Goblin',
+  abilityBoosts: ['Dexterity', 'Charisma', 'any'],
+  abilityFlaw: ['Wisdom'],
+  hp: 6,
+  speed: 25,
+  languages: ['Common', 'Goblin'],
+  darkVision: 60,
+  feats: [{ name: 'Burn It', description: 'bonus damage on fire spells or alchemical items, and increases persistent fire damage by 1 points.' }, { name: 'Junk Tinkerer', description: 'craft ordinary, poor quality items out of junk.' }, { name: 'Razor Teeth', description: '1d6 piercing damage.' }, { name: 'Very Sneaky', description: 'move additional 5\' when taking the sneak action (normally half speed) and possibly render target flat-footed.' }]
+}, {
+  name: 'Halfing',
+  abilityBoosts: ['Dexterity', 'Charisma', 'any'],
+  abilityFlaw: ['Strength'],
+  hp: 8,
+  speed: 20,
+  feats: [{ name: 'Distracting Shadows', description: 'sneak using large creatures as cover' }, { name: 'Plucky', description: 'overcome fear' }, { name: 'Titan Slinger', description: 'damage bonus with slings vs. large creatures' }, { name: 'Lucky Halfling', description: 'reroll one skill check or save you critically fail per day' }]
 }];
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24261,11 +24334,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _VerticalTabs = __webpack_require__(71);
+var _VerticalTabs = __webpack_require__(72);
 
 var _VerticalTabs2 = _interopRequireDefault(_VerticalTabs);
 
-var _HoverList = __webpack_require__(77);
+var _HoverList = __webpack_require__(78);
 
 var _HoverList2 = _interopRequireDefault(_HoverList);
 
@@ -24329,7 +24402,7 @@ var HoverList = function (_Component) {
 exports.default = HoverList;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24347,7 +24420,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _VerticalTabs = __webpack_require__(72);
+var _VerticalTabs = __webpack_require__(73);
 
 var _VerticalTabs2 = _interopRequireDefault(_VerticalTabs);
 
@@ -24412,11 +24485,11 @@ var VerticalTabs = function (_Component) {
 exports.default = VerticalTabs;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(73);
+var content = __webpack_require__(74);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -24430,22 +24503,22 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(75)(content, options);
+var update = __webpack_require__(76)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(74)(true);
+exports = module.exports = __webpack_require__(75)(true);
 // imports
 
 
 // module
-exports.push([module.i, ".VerticalTabs_wrapper_1uCgW3Um0-_CHQJOZ_ZxZK{display:flex}.VerticalTabs_tabs_16vrDHZhJYcLCw9bvRDLcS{display:flex;flex-direction:column;padding-top:4px;z-index:1;margin-right:-1px}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK{padding:.25em;background-color:purple;border:1px solid #fff;cursor:pointer}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK:not(:first-child){border-top:none}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK.VerticalTabs_selected_nw-vji7f5qz-51v5cynFs{border-width:1px 0 1px 1px}.VerticalTabs_details_1d_y0HJx1I_vMsvPAotjNk{padding:.5em;border:1px solid #fff;background:hsla(0,0%,100%,.6)}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/common/VerticalTabs.styl"],"names":[],"mappings":"AAAA,6CACE,YAAc,CACf,AACD,0CACE,aAAc,AACd,sBAAuB,AACvB,gBAAiB,AACjB,UAAW,AACX,iBAAmB,CACpB,AACD,yCACE,cAAgB,AAChB,wBAA0B,AAC1B,sBAAuB,AACvB,cAAgB,CACjB,AACD,2DACE,eAAiB,CAClB,AACD,qFACE,0BAA4B,CAC7B,AACD,6CACE,aAAe,AACf,sBAAuB,AACvB,6BAAkC,CACnC","file":"VerticalTabs.styl","sourcesContent":[".wrapper {\n  display: flex;\n}\n.tabs {\n  display: flex;\n  flex-direction: column;\n  padding-top: 4px;\n  z-index: 1;\n  margin-right: -1px;\n}\n.tab {\n  padding: 0.25em;\n  background-color: #800080;\n  border: 1px solid #fff;\n  cursor: pointer;\n}\n.tab:not(:first-child) {\n  border-top: none;\n}\n.tab.selected {\n  border-width: 1px 0 1px 1px;\n}\n.details {\n  padding: 0.5em;\n  border: 1px solid #fff;\n  background: rgba(255,255,255,0.6);\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".VerticalTabs_wrapper_1uCgW3Um0-_CHQJOZ_ZxZK{display:flex}.VerticalTabs_tabs_16vrDHZhJYcLCw9bvRDLcS{display:flex;flex-direction:column;padding-top:4px;z-index:1;margin-right:-1px}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK{padding:.25em;background-color:purple;border:1px solid #fff;cursor:pointer}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK:not(:first-child){border-top:none}.VerticalTabs_tab_2jQEUOZeiE8mlW9Y_IwbYK.VerticalTabs_selected_nw-vji7f5qz-51v5cynFs{border-width:1px 0 1px 1px}.VerticalTabs_details_1d_y0HJx1I_vMsvPAotjNk{padding:.5em;border:1px solid #fff;background:hsla(0,0%,100%,.6)}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/src/common/VerticalTabs.styl"],"names":[],"mappings":"AAAA,6CACE,YAAc,CACf,AACD,0CACE,aAAc,AACd,sBAAuB,AACvB,gBAAiB,AACjB,UAAW,AACX,iBAAmB,CACpB,AACD,yCACE,cAAgB,AAChB,wBAA0B,AAC1B,sBAAuB,AACvB,cAAgB,CACjB,AACD,2DACE,eAAiB,CAClB,AACD,qFACE,0BAA4B,CAC7B,AACD,6CACE,aAAe,AACf,sBAAuB,AACvB,6BAAkC,CACnC","file":"VerticalTabs.styl","sourcesContent":[".wrapper {\n  display: flex;\n}\n.tabs {\n  display: flex;\n  flex-direction: column;\n  padding-top: 4px;\n  z-index: 1;\n  margin-right: -1px;\n}\n.tab {\n  padding: 0.25em;\n  background-color: #800080;\n  border: 1px solid #fff;\n  cursor: pointer;\n}\n.tab:not(:first-child) {\n  border-top: none;\n}\n.tab.selected {\n  border-width: 1px 0 1px 1px;\n}\n.details {\n  padding: 0.5em;\n  border: 1px solid #fff;\n  background: rgba(255,255,255,0.6);\n}\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
@@ -24457,7 +24530,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports) {
 
 /*
@@ -24539,7 +24612,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -24605,7 +24678,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(76);
+var	fixUrls = __webpack_require__(77);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -24925,7 +24998,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 
@@ -25020,11 +25093,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(78);
+var content = __webpack_require__(79);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -25038,22 +25111,22 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(75)(content, options);
+var update = __webpack_require__(76)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(74)(true);
+exports = module.exports = __webpack_require__(75)(true);
 // imports
 
 
 // module
-exports.push([module.i, ".HoverList_placeholder_seWWrPn9Cdi4luwa_-nog{display:inline-block;cursor:pointer}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/common/HoverList.styl"],"names":[],"mappings":"AAAA,6CACE,qBAAsB,AACtB,cAAgB,CACjB","file":"HoverList.styl","sourcesContent":[".placeholder {\n  display: inline-block;\n  cursor: pointer;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".HoverList_placeholder_seWWrPn9Cdi4luwa_-nog{display:inline-block;cursor:pointer}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/src/common/HoverList.styl"],"names":[],"mappings":"AAAA,6CACE,qBAAsB,AACtB,cAAgB,CACjB","file":"HoverList.styl","sourcesContent":[".placeholder {\n  display: inline-block;\n  cursor: pointer;\n}\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
@@ -25061,7 +25134,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25079,11 +25152,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Backgrounds = __webpack_require__(80);
+var _Backgrounds = __webpack_require__(81);
 
 var _Backgrounds2 = _interopRequireDefault(_Backgrounds);
 
-var _HoverList = __webpack_require__(70);
+var _HoverList = __webpack_require__(71);
 
 var _HoverList2 = _interopRequireDefault(_HoverList);
 
@@ -25147,7 +25220,7 @@ var Background = function (_Component) {
 exports.default = Background;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25177,7 +25250,7 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25195,11 +25268,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Classes = __webpack_require__(82);
+var _Classes = __webpack_require__(83);
 
 var _Classes2 = _interopRequireDefault(_Classes);
 
-var _HoverList = __webpack_require__(70);
+var _HoverList = __webpack_require__(71);
 
 var _HoverList2 = _interopRequireDefault(_HoverList);
 
@@ -25263,7 +25336,7 @@ var CharacterClass = function (_Component) {
 exports.default = CharacterClass;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25289,11 +25362,11 @@ exports.default = [{
 }];
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(84);
+var content = __webpack_require__(85);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -25307,36 +25380,36 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(75)(content, options);
+var update = __webpack_require__(76)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(74)(true);
-// imports
-
-
-// module
-exports.push([module.i, ".Builder_info_1klbihzAtfAdVPbdtZH50X{margin:1em}.Builder_basic_5ImX9yfW3CZItfHdxLwJe{padding:.5em;background:rgba(0,0,0,.6);border:1px solid #000;color:#fff;display:flex}.Builder_block_Ub98P_qabkJyWTQz2q_xs{display:inline-block}.Builder_block_Ub98P_qabkJyWTQz2q_xs:not(:first-child){margin-left:1em}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/pages/Builder.styl"],"names":[],"mappings":"AAAA,qCACE,UAAY,CACb,AACD,qCACE,aAAe,AACf,0BAA4B,AAC5B,sBAAuB,AACvB,WAAY,AACZ,YAAc,CACf,AACD,qCACE,oBAAsB,CACvB,AACD,uDACE,eAAiB,CAClB","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n}\n.basic {\n  padding: 0.5em;\n  background: rgba(0,0,0,0.6);\n  border: 1px solid #000;\n  color: #fff;\n  display: flex;\n}\n.block {\n  display: inline-block;\n}\n.block:not(:first-child) {\n  margin-left: 1em;\n}\n"],"sourceRoot":""}]);
-
-// exports
-exports.locals = {
-	"info": "Builder_info_1klbihzAtfAdVPbdtZH50X",
-	"basic": "Builder_basic_5ImX9yfW3CZItfHdxLwJe",
-	"block": "Builder_block_Ub98P_qabkJyWTQz2q_xs"
-};
 
 /***/ }),
 /* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
+exports = module.exports = __webpack_require__(75)(true);
+// imports
 
-var content = __webpack_require__(86);
+
+// module
+exports.push([module.i, ".Builder_info_1klbihzAtfAdVPbdtZH50X{margin:1em}.Builder_section_1IPidzQqSLF3AVbJ2XfHP2{padding:.5em;background:rgba(112,66,20,.6);border:1px solid #b0681f;border-radius:4px;color:#fff;display:flex}.Builder_section_1IPidzQqSLF3AVbJ2XfHP2:not(:last-child){margin-bottom:1em}.Builder_block_Ub98P_qabkJyWTQz2q_xs{display:inline-block}.Builder_block_Ub98P_qabkJyWTQz2q_xs:not(:first-child){margin-left:1em}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/src/pages/Builder.styl"],"names":[],"mappings":"AAAA,qCACE,UAAY,CACb,AACD,wCACE,aAAe,AACf,8BAAgC,AAChC,yBAA0B,AAC1B,kBAAmB,AACnB,WAAY,AACZ,YAAc,CACf,AACD,yDACE,iBAAmB,CACpB,AACD,qCACE,oBAAsB,CACvB,AACD,uDACE,eAAiB,CAClB","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n}\n.section {\n  padding: 0.5em;\n  background: rgba(112,66,20,0.6);\n  border: 1px solid #b0681f;\n  border-radius: 4px;\n  color: #fff;\n  display: flex;\n}\n.section:not(:last-child) {\n  margin-bottom: 1em;\n}\n.block {\n  display: inline-block;\n}\n.block:not(:first-child) {\n  margin-left: 1em;\n}\n"],"sourceRoot":""}]);
+
+// exports
+exports.locals = {
+	"info": "Builder_info_1klbihzAtfAdVPbdtZH50X",
+	"section": "Builder_section_1IPidzQqSLF3AVbJ2XfHP2",
+	"block": "Builder_block_Ub98P_qabkJyWTQz2q_xs"
+};
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(87);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -25350,67 +25423,27 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(75)(content, options);
+var update = __webpack_require__(76)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(74)(true);
+exports = module.exports = __webpack_require__(75)(true);
 // imports
 
 
 // module
-exports.push([module.i, "body{background:#000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;background-size:cover}.App_app_1ityU3kuKPbxvHl2IqHIVW{position:absolute;top:0;left:0;bottom:0;right:0}", "", {"version":3,"sources":["/Users/wasche/src/pf2-tools.github.io/src/App.styl"],"names":[],"mappings":"AAAA,KACE,2EAA4E,AAC5E,qBAAuB,CACxB,AACD,gCACE,kBAAmB,AACnB,MAAO,AACP,OAAQ,AACR,SAAU,AACV,OAAS,CACV","file":"App.styl","sourcesContent":[":global body {\n  background: #000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;\n  background-size: cover;\n}\n.app {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "body{background:#000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;background-size:cover}.App_app_1ityU3kuKPbxvHl2IqHIVW{position:absolute;top:0;left:0;bottom:0;right:0}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/src/App.styl"],"names":[],"mappings":"AAAA,KACE,2EAA4E,AAC5E,qBAAuB,CACxB,AACD,gCACE,kBAAmB,AACnB,MAAO,AACP,OAAQ,AACR,SAAU,AACV,OAAS,CACV","file":"App.styl","sourcesContent":[":global body {\n  background: #000 url(\"/static/pa-rimeskull-background.jpg\") no-repeat fixed;\n  background-size: cover;\n}\n.app {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
 	"app": "App_app_1ityU3kuKPbxvHl2IqHIVW"
 };
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var classes = function classes() {
-  for (var _len = arguments.length, vals = Array(_len), _key = 0; _key < _len; _key++) {
-    vals[_key] = arguments[_key];
-  }
-
-  return vals.map(function (val) {
-    if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
-      return Object.entries(val).map(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            name = _ref2[0],
-            check = _ref2[1];
-
-        return check && name;
-      }).filter(function (v) {
-        return !!v;
-      });
-    }
-    return [val];
-  }).reduce(function (accum, val) {
-    return accum.concat(val);
-  }).join(' ');
-};
-
-exports.classes = classes;
 
 /***/ })
 /******/ ]);

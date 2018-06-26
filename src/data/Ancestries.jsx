@@ -17,6 +17,47 @@ export default [
     hp: 6,
     speed: 30,
     languages: ['Common', 'Elf'],
-    lowLightVision: 60
+    lowLightVision: 60,
+  },
+  {
+    name: 'Gnome',
+    abilityBoosts: ['Constitution', 'Charisma', 'any'],
+    abilityFlaw: ['Strength'],
+    hp: 8,
+    lowLightVision: 60,
+    feats: [
+      {name: 'Few Fellowship', description: 'more charismatic when dealing with fey'},
+      {name: 'First World Magic', description: 'bonus cantrip with various options'},
+      {name: 'Discerning Smell', description: 'find invisible creatures'},
+      {name: 'Animal Speaker', description: 'talk to animals'},
+    ],
+  },
+  {
+    name: 'Goblin',
+    abilityBoosts: ['Dexterity', 'Charisma', 'any'],
+    abilityFlaw: ['Wisdom'],
+    hp: 6,
+    speed: 25,
+    languages: ['Common', 'Goblin'],
+    darkVision: 60,
+    feats: [
+      {name: 'Burn It', description: 'bonus damage on fire spells or alchemical items, and increases persistent fire damage by 1 points.'},
+      {name: 'Junk Tinkerer', description: 'craft ordinary, poor quality items out of junk.'},
+      {name: 'Razor Teeth', description: '1d6 piercing damage.'},
+      {name: 'Very Sneaky', description: 'move additional 5\' when taking the sneak action (normally half speed) and possibly render target flat-footed.'},
+    ],
+  },
+  {
+    name: 'Halfing',
+    abilityBoosts: ['Dexterity', 'Charisma', 'any'],
+    abilityFlaw: ['Strength'],
+    hp: 8,
+    speed: 20,
+    feats: [
+      {name: 'Distracting Shadows', description: 'sneak using large creatures as cover'},
+      {name: 'Plucky', description: 'overcome fear'},
+      {name: 'Titan Slinger', description: 'damage bonus with slings vs. large creatures'},
+      {name: 'Lucky Halfling', description: 'reroll one skill check or save you critically fail per day'},
+    ],
   },
 ]
