@@ -24085,6 +24085,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _util = __webpack_require__(68);
 
+var _Section = __webpack_require__(88);
+
+var _Section2 = _interopRequireDefault(_Section);
+
 var _Ancestry = __webpack_require__(69);
 
 var _Ancestry2 = _interopRequireDefault(_Ancestry);
@@ -24109,30 +24113,28 @@ var _ref2 = _jsx(_Background2.default, {});
 
 var _ref3 = _jsx(_CharacterClass2.default, {});
 
-var _ref4 = _jsx('li', {}, void 0, 'Select Ancestry Feat');
-
-var _ref5 = _jsx('li', {}, void 0, 'Assign Skill Proficiencies');
-
-var _ref6 = _jsx('li', {}, void 0, 'Buy Gear');
-
-var _ref7 = _jsx('li', {}, void 0, 'Select Class Options');
-
-var Builder = function Builder() {
-  return _jsx('div', {
-    className: _Builder2.default.info
-  }, void 0, _jsx('div', {
-    className: _Builder2.default.section
+var BasicInfo = function BasicInfo() {
+  return _jsx(_Section2.default, {
+    heading: 'Basic Info'
   }, void 0, _jsx('span', {
     className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.ancestry)
   }, void 0, _ref), _jsx('span', {
     className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.bg)
   }, void 0, _ref2), _jsx('span', {
     className: (0, _util.classes)(_Builder2.default.block, _Builder2.default.charClass)
-  }, void 0, _ref3)), _jsx('div', {
-    className: _Builder2.default.section
-  }, void 0, _ref4, _ref5), _jsx('div', {
-    className: _Builder2.default.section
-  }, void 0, _ref6, _ref7));
+  }, void 0, _ref3));
+};
+
+var _ref4 = _jsx(BasicInfo, {});
+
+var _ref5 = _jsx(_Section2.default, {}, void 0, _jsx('div', {}, void 0, 'Select Ancestry Feat'), _jsx('div', {}, void 0, 'Assign Skill Proficiencies'));
+
+var _ref6 = _jsx(_Section2.default, {}, void 0, _jsx('div', {}, void 0, 'Buy Gear'), _jsx('div', {}, void 0, 'Select Class Options'));
+
+var Builder = function Builder() {
+  return _jsx('div', {
+    className: _Builder2.default.info
+  }, void 0, _ref4, _ref5, _ref6);
 };
 
 exports.default = Builder;
@@ -25395,12 +25397,11 @@ exports = module.exports = __webpack_require__(75)(true);
 
 
 // module
-exports.push([module.i, ".Builder_info_1klbihzAtfAdVPbdtZH50X{margin:1em}.Builder_section_1IPidzQqSLF3AVbJ2XfHP2{padding:.5em;background:rgba(112,66,20,.6);border:1px solid #b0681f;border-radius:4px;color:#fff;display:flex}.Builder_section_1IPidzQqSLF3AVbJ2XfHP2:not(:last-child){margin-bottom:1em}.Builder_block_Ub98P_qabkJyWTQz2q_xs{display:inline-block}.Builder_block_Ub98P_qabkJyWTQz2q_xs:not(:first-child){margin-left:1em}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/src/pages/Builder.styl"],"names":[],"mappings":"AAAA,qCACE,UAAY,CACb,AACD,wCACE,aAAe,AACf,8BAAgC,AAChC,yBAA0B,AAC1B,kBAAmB,AACnB,WAAY,AACZ,YAAc,CACf,AACD,yDACE,iBAAmB,CACpB,AACD,qCACE,oBAAsB,CACvB,AACD,uDACE,eAAiB,CAClB","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n}\n.section {\n  padding: 0.5em;\n  background: rgba(112,66,20,0.6);\n  border: 1px solid #b0681f;\n  border-radius: 4px;\n  color: #fff;\n  display: flex;\n}\n.section:not(:last-child) {\n  margin-bottom: 1em;\n}\n.block {\n  display: inline-block;\n}\n.block:not(:first-child) {\n  margin-left: 1em;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".Builder_info_1klbihzAtfAdVPbdtZH50X{margin:1em}.Builder_block_Ub98P_qabkJyWTQz2q_xs{display:inline-block}.Builder_block_Ub98P_qabkJyWTQz2q_xs:not(:last-child){margin-right:1em}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/src/pages/Builder.styl"],"names":[],"mappings":"AAAA,qCACE,UAAY,CACb,AACD,qCACE,oBAAsB,CACvB,AACD,sDACE,gBAAkB,CACnB","file":"Builder.styl","sourcesContent":[".info {\n  margin: 1em;\n}\n.block {\n  display: inline-block;\n}\n.block:not(:last-child) {\n  margin-right: 1em;\n}\n"],"sourceRoot":""}]);
 
 // exports
 exports.locals = {
 	"info": "Builder_info_1klbihzAtfAdVPbdtZH50X",
-	"section": "Builder_section_1IPidzQqSLF3AVbJ2XfHP2",
 	"block": "Builder_block_Ub98P_qabkJyWTQz2q_xs"
 };
 
@@ -25443,6 +25444,81 @@ exports.push([module.i, "body{background:#000 url(\"/static/pa-rimeskull-backgro
 // exports
 exports.locals = {
 	"app": "App_app_1ityU3kuKPbxvHl2IqHIVW"
+};
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Section = __webpack_require__(89);
+
+var _Section2 = _interopRequireDefault(_Section);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+  var heading = _ref.heading,
+      children = _ref.children;
+  return _jsx('div', {
+    className: _Section2.default.section
+  }, void 0, _jsx('span', {
+    className: _Section2.default.heading
+  }, void 0, heading), children);
+};
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(90);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(76)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(75)(true);
+// imports
+
+
+// module
+exports.push([module.i, ".Section_section_2SdeEqZSNdArxb-rsYP4b-{position:relative;padding:1em .5em .5em;background:rgba(112,66,20,.6);border:1px solid #b0681f;border-radius:4px;color:#fff;display:flex}.Section_section_2SdeEqZSNdArxb-rsYP4b-:not(:last-child){margin-bottom:1em}.Section_heading_2kIDDsaREgTUl-wwrRayWo{font-size:12px;position:absolute;left:.65em;top:0}", "", {"version":3,"sources":["/Users/nazu/src/pathfinder2/src/layout/Section.styl"],"names":[],"mappings":"AAAA,wCACE,kBAAmB,AACnB,sBAAyB,AACzB,8BAAgC,AAChC,yBAA0B,AAC1B,kBAAmB,AACnB,WAAY,AACZ,YAAc,CACf,AACD,yDACE,iBAAmB,CACpB,AACD,wCACE,eAAgB,AAChB,kBAAmB,AACnB,WAAa,AACb,KAAO,CACR","file":"Section.styl","sourcesContent":[".section {\n  position: relative;\n  padding: 1em 0.5em 0.5em;\n  background: rgba(112,66,20,0.6);\n  border: 1px solid #b0681f;\n  border-radius: 4px;\n  color: #fff;\n  display: flex;\n}\n.section:not(:last-child) {\n  margin-bottom: 1em;\n}\n.heading {\n  font-size: 12px;\n  position: absolute;\n  left: 0.65em;\n  top: 0;\n}\n"],"sourceRoot":""}]);
+
+// exports
+exports.locals = {
+	"section": "Section_section_2SdeEqZSNdArxb-rsYP4b-",
+	"heading": "Section_heading_2kIDDsaREgTUl-wwrRayWo"
 };
 
 /***/ })
